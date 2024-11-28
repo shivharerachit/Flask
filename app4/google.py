@@ -1,4 +1,15 @@
-client_secret = "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"
+from dotenv import load_dotenv
+import os
+
+# Load the .env file
+load_dotenv()
+
+client_id = os.getenv('CLIENT_ID'),
+project_id = os.getenv('PROJECT_ID'),
+auth_uri = os.getenv('AUTH_URI'),
+token_uri = os.getenv('TOKEN_URI'),
+auth_provider = os.getenv('AUTH_PROVIDER'),
+client_secret = os.getenv('CLIENT_SECRET')
 # from google_auth_oauthlib.flow import InstalledAppFlow
 # from google.auth.transport.requests import Request
 # flow = InstalledAppFlow.from_client_secrets_file(
@@ -8,7 +19,16 @@ client_secret = "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"
 
 # from googleapiclient.discovery import build
 # service = build('drive', 'v3', credentials=creds)
-json_file = {"web":{"client_id":"84420110064-qo2j067loorjmotsv46mv9knc5kg6101.apps.googleusercontent.com","project_id":"rachits-project","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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"}}
+json_file = {
+    "web":{
+        "client_id": client_id,
+        "project_id": project_id,
+        "auth_uri": auth_uri,
+        "token_uri": token_uri,
+        "auth_provider_x509_cert_url": auth_provider,
+        "client_secret": client_secret
+        }
+    }
 
 
 
@@ -25,8 +45,6 @@ import json
 with open('client_secret.json', 'r') as json_file:
     client_secret = json.load(json_file)
 
-client_id = '84420110064-qo2j067loorjmotsv46mv9knc5kg6101.apps.googleusercontent.com'
-# client_secret = json_file['web']['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']
 
 # Initialize flow using client secrets
 flow = InstalledAppFlow.from_client_secrets_file(
@@ -45,8 +63,6 @@ service = build('drive', 'v3', credentials=creds)
 
 # gauth = GoogleAuth()
 # drive = GoogleDrive(gauth)
-
-# folder = '1y5UdK6rIgLPp8vTR22323LCcbDbBIozzcJ
 
 # file1 = drive.CreateFile({'parents' : [{'id' : folder}], 'title' : 'hello2.txt'})
 # file1.SetContentString('Hello world!, this is my second file')
